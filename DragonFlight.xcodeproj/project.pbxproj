@@ -142,6 +142,10 @@
 		4797D89C18474ABB0076D61D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89B18474ABB0076D61D /* HelloWorldLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4797D89F18474ABB0076D61D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89E18474ABB0076D61D /* IntroLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4797D8A718474CA40076D61D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8A618474CA40076D61D /* MenuLayer.m */; };
+		4797D8AA1847A8AA0076D61D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8A91847A8AA0076D61D /* GameScene.m */; };
+		4797D8AD1847A8CD0076D61D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8AC1847A8CD0076D61D /* GameLayer.m */; };
+		4797D8B01847A8DA0076D61D /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8AF1847A8DA0076D61D /* HUDLayer.m */; };
+		4797D8B21847AEE60076D61D /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4797D8B11847AEE60076D61D /* background.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -428,6 +432,13 @@
 		4797D89E18474ABB0076D61D /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		4797D8A518474CA40076D61D /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		4797D8A618474CA40076D61D /* MenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLayer.m; sourceTree = "<group>"; };
+		4797D8A81847A8AA0076D61D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		4797D8A91847A8AA0076D61D /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		4797D8AB1847A8CD0076D61D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		4797D8AC1847A8CD0076D61D /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		4797D8AE1847A8D90076D61D /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
+		4797D8AF1847A8DA0076D61D /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
+		4797D8B11847AEE60076D61D /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = Resources/background.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +510,12 @@
 				4797D89318474ABB0076D61D /* Supporting Files */,
 				4797D8A518474CA40076D61D /* MenuLayer.h */,
 				4797D8A618474CA40076D61D /* MenuLayer.m */,
+				4797D8A81847A8AA0076D61D /* GameScene.h */,
+				4797D8A91847A8AA0076D61D /* GameScene.m */,
+				4797D8AB1847A8CD0076D61D /* GameLayer.h */,
+				4797D8AC1847A8CD0076D61D /* GameLayer.m */,
+				4797D8AE1847A8D90076D61D /* HUDLayer.h */,
+				4797D8AF1847A8DA0076D61D /* HUDLayer.m */,
 			);
 			path = DragonFlight;
 			sourceTree = "<group>";
@@ -506,6 +523,7 @@
 		4797D70718474AB60076D61D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4797D8B11847AEE60076D61D /* background.jpg */,
 				4797D70818474AB60076D61D /* Default.png */,
 				4797D70A18474AB60076D61D /* Default@2x.png */,
 				4797D70C18474AB60076D61D /* Default-568h@2x.png */,
@@ -947,6 +965,7 @@
 				4797D71B18474AB60076D61D /* Icon@2x.png in Resources */,
 				4797D71E18474AB60076D61D /* iTunesArtwork in Resources */,
 				4797D87718474ABA0076D61D /* ChangeLog in Resources */,
+				4797D8B21847AEE60076D61D /* background.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,6 +1089,9 @@
 				4797D89C18474ABB0076D61D /* HelloWorldLayer.m in Sources */,
 				4797D89F18474ABB0076D61D /* IntroLayer.m in Sources */,
 				4797D8A718474CA40076D61D /* MenuLayer.m in Sources */,
+				4797D8AA1847A8AA0076D61D /* GameScene.m in Sources */,
+				4797D8AD1847A8CD0076D61D /* GameLayer.m in Sources */,
+				4797D8B01847A8DA0076D61D /* HUDLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

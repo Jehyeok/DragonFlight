@@ -11,6 +11,8 @@
 #import "CCLabelTTF.h"
 #import "CCMenu.h"
 #import "CCMenuItem.h"
+#import "GameScene.h"
+
 @implementation MenuLayer
 +(CCScene *)scene {
     CCScene *scene = [CCScene node];
@@ -38,7 +40,8 @@
         [CCMenuItemFont setFontName:@"AppleSDGothicNeo-Medium"];
         // 메뉴 아이템 블럭
         CCMenuItem *startItem = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
-        // Start 메뉴 버튼 눌렀을 경우, GameScene을 화면 전환과 함께 호출
+            // Start 메뉴 버튼 눌렀을 경우, GameScene을 화면 전환과 함께 호출
+            [[CCDirector sharedDirector] replaceScene:[GameScene node]];
         }];
         
         // 메뉴 버튼을 메뉴에 추가
