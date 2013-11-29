@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4745AEBD18487B8D004ABA71 /* player_body.png in Resources */ = {isa = PBXBuildFile; fileRef = 4745AEBA18487B8D004ABA71 /* player_body.png */; };
+		4745AEC118487CB7004ABA71 /* player_wing.png in Resources */ = {isa = PBXBuildFile; fileRef = 4745AEC018487CB7004ABA71 /* player_wing.png */; };
+		4745AEC318487F09004ABA71 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4745AEC218487F09004ABA71 /* background.png */; };
 		4797D6F318474AB60076D61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4797D6F218474AB60076D61D /* QuartzCore.framework */; };
 		4797D6F518474AB60076D61D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4797D6F418474AB60076D61D /* OpenGLES.framework */; };
 		4797D6F718474AB60076D61D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4797D6F618474AB60076D61D /* OpenAL.framework */; };
@@ -145,10 +148,13 @@
 		4797D8AA1847A8AA0076D61D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8A91847A8AA0076D61D /* GameScene.m */; };
 		4797D8AD1847A8CD0076D61D /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8AC1847A8CD0076D61D /* GameLayer.m */; };
 		4797D8B01847A8DA0076D61D /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8AF1847A8DA0076D61D /* HUDLayer.m */; };
-		4797D8B21847AEE60076D61D /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4797D8B11847AEE60076D61D /* background.jpg */; };
+		4797D8B71847BA790076D61D /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8B61847BA790076D61D /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4745AEBA18487B8D004ABA71 /* player_body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_body.png; sourceTree = "<group>"; };
+		4745AEC018487CB7004ABA71 /* player_wing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_wing.png; sourceTree = "<group>"; };
+		4745AEC218487F09004ABA71 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		4797D6EF18474AB60076D61D /* DragonFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4797D6F218474AB60076D61D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4797D6F418474AB60076D61D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -438,7 +444,8 @@
 		4797D8AC1847A8CD0076D61D /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		4797D8AE1847A8D90076D61D /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
 		4797D8AF1847A8DA0076D61D /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
-		4797D8B11847AEE60076D61D /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = Resources/background.jpg; sourceTree = "<group>"; };
+		4797D8B51847BA790076D61D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		4797D8B61847BA790076D61D /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +523,8 @@
 				4797D8AC1847A8CD0076D61D /* GameLayer.m */,
 				4797D8AE1847A8D90076D61D /* HUDLayer.h */,
 				4797D8AF1847A8DA0076D61D /* HUDLayer.m */,
+				4797D8B51847BA790076D61D /* Player.h */,
+				4797D8B61847BA790076D61D /* Player.m */,
 			);
 			path = DragonFlight;
 			sourceTree = "<group>";
@@ -523,7 +532,9 @@
 		4797D70718474AB60076D61D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4797D8B11847AEE60076D61D /* background.jpg */,
+				4745AEC218487F09004ABA71 /* background.png */,
+				4745AEC018487CB7004ABA71 /* player_wing.png */,
+				4745AEBA18487B8D004ABA71 /* player_body.png */,
 				4797D70818474AB60076D61D /* Default.png */,
 				4797D70A18474AB60076D61D /* Default@2x.png */,
 				4797D70C18474AB60076D61D /* Default-568h@2x.png */,
@@ -965,7 +976,9 @@
 				4797D71B18474AB60076D61D /* Icon@2x.png in Resources */,
 				4797D71E18474AB60076D61D /* iTunesArtwork in Resources */,
 				4797D87718474ABA0076D61D /* ChangeLog in Resources */,
-				4797D8B21847AEE60076D61D /* background.jpg in Resources */,
+				4745AEBD18487B8D004ABA71 /* player_body.png in Resources */,
+				4745AEC118487CB7004ABA71 /* player_wing.png in Resources */,
+				4745AEC318487F09004ABA71 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,6 +1105,7 @@
 				4797D8AA1847A8AA0076D61D /* GameScene.m in Sources */,
 				4797D8AD1847A8CD0076D61D /* GameLayer.m in Sources */,
 				4797D8B01847A8DA0076D61D /* HUDLayer.m in Sources */,
+				4797D8B71847BA790076D61D /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,6 +1213,7 @@
 				4797D8A418474ABB0076D61D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

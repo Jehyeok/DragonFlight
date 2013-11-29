@@ -18,21 +18,30 @@
         winSize = [[CCDirector sharedDirector] winSize];
         // 배경 초기화
         [self initBackground];
+        // 플레이어 초기화
+        [self initPlayer];
     }
     return self;
 }
 
 -(void)initBackground {
     // 배경에 사용할 1번 이미지 생성 후, 화면에 꽉 차게 이동
-    _backgroundImage1 = [CCSprite spriteWithFile:@"background.jpg"];
+    _backgroundImage1 = [CCSprite spriteWithFile:@"background.png"];
     _backgroundImage1.anchorPoint = CGPointZero;
     [self addChild:_backgroundImage1];
     
     // 배경에 사용할 2번 이미지 생성 후, 1번 이미지 위로 이동
-    _backgroundImage2 = [CCSprite spriteWithFile:@"background.jpg"];
+    _backgroundImage2 = [CCSprite spriteWithFile:@"background.png"];
     _backgroundImage2.anchorPoint = CGPointZero;
     _backgroundImage2.position = CGPointMake( 0, [_backgroundImage2 boundingBox].size.height);
     [self addChild:_backgroundImage2 z:-1];
+}
+
+-(void)initPlayer {
+    // 플레이어 생성
+    _player = [Player node];
+    // 가장 위에 위치 시킴
+    [self addChild:_player z:99];
 }
 
 - (void)update:(ccTime)dt {
