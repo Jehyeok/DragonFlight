@@ -9,6 +9,8 @@
 #import "GameLayer.h"
 
 #import "CCDirector.h"
+#import "CCTouchDispatcher.h"
+#import "ccDeprecated.h"
 
 @implementation GameLayer
 -(id)init {
@@ -65,7 +67,38 @@
 
 -(void)onEnter {
     [super onEnter];
+    NSLog(@"touch");
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
     // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴
     [self scheduleUpdate];
+}
+
+#pragma mark Touch
+
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    // 바로 전 좌표 값과 비교 위해 저장. UI좌표계를 cocos 좌표계로 변환
+    prePoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+    return YES;
+    NSLog(@"touch began");
+}
+
+-(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    // 움직였을 때 플레이어의 위치 값. UI좌표계를 cocos 좌표계로 변환
+    CGPoint location = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+    // 플레이어 캐릭터 위치 ( 기존 위치 X값 - 움직인 거리 )
+    _player.position = CGPointMake( _player.position.x - (prePoint.x - location.x), _player.position.y );
+    // 왼쪽과 오른쪽 경계 체크
+    if (_player.position.x < 0) {
+        _player.position = CGPointMake( 0, _player.position.y );
+    } else if ( _player.position.x > winSize.width ) {
+        _player.position = CGPointMake( winSize.width, _player.position.y );
+    }
+    // 현재 위치를 이전 값으로 초기화
+    prePoint = location;
+    NSLog(@"touching");
+}
+
+-(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    
 }
 @end

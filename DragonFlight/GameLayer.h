@@ -13,6 +13,8 @@
 @interface GameLayer : CCLayer {
     // 화면 싸이즈 저장 변수
     CGSize winSize;
+    // 움직이기 바로 전 플레이어 위치
+    CGPoint prePoint;
 }
 @property (nonatomic, strong) CCSprite *backgroundImage1;
 @property (nonatomic, strong) CCSprite *backgroundImage2;
