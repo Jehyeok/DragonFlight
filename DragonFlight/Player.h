@@ -8,7 +8,9 @@
 
 #import "CCSprite.h"
 
-@interface Player : CCSprite
+@interface Player : CCSprite {
+    BOOL wingDown;
+}
 
 @property (nonatomic, strong) CCSprite *leftWing;
 @property (nonatomic, strong) CCSprite *rightWing;

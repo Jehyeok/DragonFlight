@@ -19,6 +19,8 @@
         // Game Layer 추가
         _gameLayer = [GameLayer node];
         [self addChild:_gameLayer z:0];
+        
+        self.gameLayer.hudLayer = _hudLayer;
     }
     return self;
 }

@@ -7,7 +7,11 @@
 //
 
 #import "CCLayer.h"
+#import "CCLabelTTF.h"
 
-@interface HUDLayer : CCLayer
+@interface HUDLayer : CCLayer {
+    CCLabelTTF *scoreLabel;
+}
 
+-(void)setScoreText:(int)score;
 @end

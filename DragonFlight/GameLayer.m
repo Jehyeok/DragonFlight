@@ -11,6 +11,9 @@
 #import "CCDirector.h"
 #import "CCTouchDispatcher.h"
 #import "ccDeprecated.h"
+#import "CCSpriteBatchNode.h"
+#import "MenuLayer.h"
+#define BULLET_NUM 30
 
 @implementation GameLayer
 -(id)init {
@@ -22,6 +25,11 @@
         [self initBackground];
         // 플레이어 초기화
         [self initPlayer];
+        // 적 초기화
+        [self initEnemies];
+        lastBullet = 0;
+        
+        [self initBullets];
     }
     return self;
 }
@@ -46,7 +54,36 @@
     [self addChild:_player z:99];
 }
 
-- (void)update:(ccTime)dt {
+-(void) initEnemies {
+    // 적을 배열에 저장
+    enemies = [[CCArray alloc] initWithCapacity:MONSTER_NUM];
+    // 화면 나눔
+    float width = winSize.width / MONSTER_NUM;
+    // 적 나타냄
+    for ( int i = 0; i < MONSTER_NUM; i++) {
+        Enemy *enemy = [Enemy node];
+        [self addChild:enemy z:98];
+        enemy.position = CGPointMake( i * width + width/2, winSize.height + enemy.boundingBox.size.height/2);
+        [enemies addObject:enemy];
+    }
+}
+
+-(void)initBullets {
+    // 총알 갯수만큼 배열 만듦
+    bullets = [[CCArray alloc] initWithCapacity:BULLET_NUM];
+    // 총알 갯수만큼 초기화
+    for (int i = 0; i < BULLET_NUM; i++) {
+        // 총알 노드 생성
+        Bullet *bullet = [Bullet node];
+        // 초기상태는 안보임
+        bullet.visible = NO;
+        // 배치 노드에 넣음
+        [self addChild:bullet z:101];
+        [bullets addObject:bullet];
+    }
+}
+
+-(void)update:(ccTime)dt {
     // 배경화면 움직이는 속도, 현재 위치에 이동할 취리를 ccpADD로 더함
     CGPoint backgroundScrollVel = CGPointMake( 0, -100 );
     // 현재 이미지1의 위치 값 불러옴
@@ -63,14 +100,80 @@
     
         _backgroundImage2.position = CGPointMake(multResult.x + _backgroundImage2.position.x, multResult.y + _backgroundImage2.position.y);
     }
+    
+    // 플레이어, 적, 총알 충돌 처리
+    for (Enemy *enemy in enemies) {
+        // 적이 죽은 상태면 패스
+        if (!enemy.state) continue;
+        
+        // 총알을 하나 꺼냄
+        for (Bullet *bullet in bullets) {
+            // 총알이 보이지 않으면 패스
+            if (!bullet.visible) continue;
+            
+            // 총알과 적 충돌 체크
+            if (!isCollision && CGRectIntersectsRect(bullet.boundingBox, enemy.boundingBox)) {
+                bullet.visible = NO;
+                
+                if (![enemy attackedWithPoint:[bullet bulletType]]) {
+                    
+                }
+            }
+        }
+        
+        if (!isCollision && CGRectIntersectsRect(enemy.boundingBox, _player.boundingBox)) {
+            isCollision = YES;
+            if (isCollision) {
+                _player.visible = NO;
+                // 죽으면 총알 다 삭제
+                [self unschedule:@selector(updateBullet:)];
+                for (Bullet *bullet in bullets) {
+                    bullet.visible = NO;
+                    [bullet removeFromParentAndCleanup:YES];
+                }
+                
+                CCCallBlock *allStop = [CCCallBlock actionWithBlock:^{
+                    // 터치 이벤트 스탑
+                    self.isTouchEnabled = NO;
+                }];
+                // 딜레이를 위한 액션
+                CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0f];
+                // 메뉴로 나가기 위한 액션
+                CCCallBlock *block = [CCCallBlock actionWithBlock:^{
+                    [[CCDirector sharedDirector] replaceScene:[MenuLayer scene]];
+                }];
+                // 액션 준비
+                CCSequence *seq = [CCSequence actions:allStop, delay, block, nil];
+                // 액션 실행
+                [self runAction:seq];
+            }
+        }
+    }
+}
+
+-(void)updateBullet:(ccTime)dt {
+    // 배열에서 총알 하나씩 꺼냄
+    Bullet *bullet = (Bullet*)[bullets objectAtIndex:lastBullet];
+    // 꺼내서 보이게 설정
+    bullet.visible = YES;
+    bullet.position = CGPointMake( _player.position.x, _player.position.y );
+    // 마지막 총알이 배열의 마지막이면 다시 초기화
+    if (++lastBullet == BULLET_NUM) {
+        lastBullet = 0;
+    }
+}
+
+-(void)updateScore:(ccTime)dt {
+    [_hudLayer setScoreText:score++];
 }
 
 -(void)onEnter {
     [super onEnter];
-    NSLog(@"touch");
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
     // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴
     [self scheduleUpdate];
+    [self schedule:@selector(updateBullet:) interval:0.05f];
+    [self schedule:@selector(updateScore:) interval:0.01f];
 }
 
 #pragma mark Touch
@@ -79,7 +182,6 @@
     // 바로 전 좌표 값과 비교 위해 저장. UI좌표계를 cocos 좌표계로 변환
     prePoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
     return YES;
-    NSLog(@"touch began");
 }
 
 -(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -95,7 +197,6 @@
     }
     // 현재 위치를 이전 값으로 초기화
     prePoint = location;
-    NSLog(@"touching");
 }
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
