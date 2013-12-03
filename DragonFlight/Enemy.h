@@ -7,6 +7,9 @@
 //
 
 #import "CCSprite.h"
+#import "CCDirector.h"
+
+#define ENEMY_ENERGY 100
 
 typedef enum {
     dead = 0,
@@ -24,3 +27,4 @@ typedef enum {
 -(NSInteger)attackedWithPoint:(NSInteger)point;
 
 @end
+

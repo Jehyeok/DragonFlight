@@ -7,9 +7,9 @@
 //
 
 #import "Enemy.h"
-#import "CCDirector.h"
-#define ENEMY_ENERGY 100
+
 @implementation Enemy
+
 -(id)init {
     self = [super initWithFile:@"stone.png"];
     if (self) {
@@ -18,24 +18,6 @@
         _energy = ENEMY_ENERGY;
     }
     return self;
-}
-
-// 일정 시간마다 적을 아래로 움직임
--(void)update:(ccTime)dt {
-    // 적의 움직임 속도
-    CGPoint enemyScrollVel = CGPointMake( 0, -250);
-    // 현재 적 위치
-    CGPoint enemyPos = [self position];
-    // 화면 아래로 벗어나는지 체크
-    if (enemyPos.y + self.boundingBox.size.height / 2 <= 0) {
-        // 벗어나면 리셋
-        [self reset];
-    } else {
-        // 위치값 아래로 이동
-        CGPoint multResult = CGPointMake( enemyScrollVel.x * dt, enemyScrollVel.y * dt );
-        enemyPos = CGPointMake( enemyPos.x + multResult.x, enemyPos.y + multResult.y );
-        [self setPosition:enemyPos];
-    }
 }
 
 -(NSInteger)attackedWithPoint:(NSInteger)point {
@@ -59,6 +41,24 @@
     [self setVisible:YES];
     _energy = ENEMY_ENERGY;
     _state = alive;
+}
+
+// 일정 시간마다 적을 아래로 움직임
+-(void)update:(ccTime)dt {
+    // 적의 움직임 속도
+    CGPoint enemyScrollVel = CGPointMake( 0, -250);
+    // 현재 적 위치
+    CGPoint enemyPos = [self position];
+    // 화면 아래로 벗어나는지 체크
+    if (enemyPos.y + self.boundingBox.size.height / 2 <= 0) {
+        // 벗어나면 리셋
+        [self reset];
+    } else {
+        // 위치값 아래로 이동
+        CGPoint multResult = CGPointMake( enemyScrollVel.x * dt, enemyScrollVel.y * dt );
+        enemyPos = CGPointMake( enemyPos.x + multResult.x, enemyPos.y + multResult.y );
+        [self setPosition:enemyPos];
+    }
 }
 
 -(void)onEnter {

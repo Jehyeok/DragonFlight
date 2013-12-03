@@ -8,13 +8,6 @@
 
 #import "GameLayer.h"
 
-#import "CCDirector.h"
-#import "CCTouchDispatcher.h"
-#import "ccDeprecated.h"
-#import "CCSpriteBatchNode.h"
-#import "MenuLayer.h"
-#define BULLET_NUM 10
-
 @implementation GameLayer
 -(id)init {
     self = [super init];
@@ -83,7 +76,7 @@
     }
 }
 
--(void)update:(ccTime)dt {
+-(void)updateBackground:(ccTime)dt {
     // 배경화면 움직이는 속도, 현재 위치에 이동할 취리를 ccpADD로 더함
     CGPoint backgroundScrollVel = CGPointMake( 0, -100 );
     // 현재 이미지1의 위치 값 불러옴
@@ -97,16 +90,16 @@
         CGPoint multResult = CGPointMake(backgroundScrollVel.x * dt, backgroundScrollVel.y * dt);
         
         _backgroundImage1.position = CGPointMake(multResult.x + _backgroundImage1.position.x, multResult.y + _backgroundImage1.position.y);
-    
+        
         _backgroundImage2.position = CGPointMake(multResult.x + _backgroundImage2.position.x, multResult.y + _backgroundImage2.position.y);
     }
-    
+}
+-(void)updateCollision:(ccTime)dt {
     // 플레이어, 적, 총알 충돌 처리
     for (Enemy *enemy in enemies) {
         // 적이 죽은 상태면 패스
         if (!enemy.state) continue;
         
-        // 총알을 하나 꺼냄
         for (Bullet *bullet in bullets) {
             // 총알이 보이지 않으면 패스
             if (!bullet.visible) continue;
@@ -134,7 +127,7 @@
                 
                 CCCallBlock *allStop = [CCCallBlock actionWithBlock:^{
                     // 터치 이벤트 스탑
-                    self.isTouchEnabled = NO;
+                    self.touchEnabled = NO;
                 }];
                 // 딜레이를 위한 액션
                 CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0f];
@@ -170,8 +163,8 @@
 -(void)onEnter {
     [super onEnter];
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-    // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴
-    [self scheduleUpdate];
+    [self schedule:@selector(updateCollision:)];
+    [self schedule:@selector(updateBackground:)];
     [self schedule:@selector(updateBullet:) interval:0.15f];
     [self schedule:@selector(updateScore:) interval:0.01f];
 }

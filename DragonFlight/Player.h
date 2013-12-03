@@ -7,6 +7,8 @@
 //
 
 #import "CCSprite.h"
+#import "CCDirector.h"
+#import "cocos2d.h"
 
 @interface Player : CCSprite {
     BOOL wingDown;
@@ -16,3 +18,4 @@
 @property (nonatomic, strong) CCSprite *rightWing;
 
 @end
+

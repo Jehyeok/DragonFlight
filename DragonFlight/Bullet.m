@@ -8,8 +8,6 @@
 
 #import "Bullet.h"
 
-#import "CCDirector.h"
-
 @implementation Bullet
 
 -(id)init {

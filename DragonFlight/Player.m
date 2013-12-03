@@ -8,9 +8,6 @@
 
 #import "Player.h"
 
-#import "CCDirector.h"
-#import "cocos2d.h"
-
 @implementation Player
 -(id)init {
     // 플레이어 몸통 스프라이트 생성
@@ -67,3 +64,4 @@
     [self schedule:@selector(updateWings:) interval:0.2];
 }
 @end
+

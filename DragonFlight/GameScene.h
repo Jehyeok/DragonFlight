@@ -10,7 +10,7 @@
 #import "GameLayer.h"
 #import "HUDLayer.h"
 
-@interface GameScene : CCScene
+@interface GameScene : CCScene 
 
 @property (nonatomic, strong) GameLayer *gameLayer;
 @property (nonatomic, strong) HUDLayer *hudLayer;

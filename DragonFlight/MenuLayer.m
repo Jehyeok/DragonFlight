@@ -8,11 +8,6 @@
 
 #import "MenuLayer.h"
 
-#import "CCLabelTTF.h"
-#import "CCMenu.h"
-#import "CCMenuItem.h"
-#import "GameScene.h"
-
 @implementation MenuLayer
 +(CCScene *)scene {
     CCScene *scene = [CCScene node];

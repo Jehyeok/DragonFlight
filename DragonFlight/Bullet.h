@@ -7,6 +7,7 @@
 //
 
 #import "CCSprite.h"
+#import "CCDirector.h"
 
 typedef enum {
     damage = 20
@@ -17,3 +18,4 @@ typedef enum {
 @property (nonatomic, readwrite) BulletType bulletType;
 
 @end
+

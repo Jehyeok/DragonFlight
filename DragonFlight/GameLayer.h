@@ -13,8 +13,13 @@
 #import "Player.h"
 #import "Enemy.h"
 #import "Bullet.h"
+#import "CCDirector.h"
+#import "CCTouchDispatcher.h"
+#import "ccDeprecated.h"
+#import "CCSpriteBatchNode.h"
+#import "MenuLayer.h"
 
-
+#define BULLET_NUM 10
 #define MONSTER_NUM 5
 
 @interface GameLayer : CCLayer {
