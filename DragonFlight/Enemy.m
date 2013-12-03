@@ -8,14 +8,14 @@
 
 #import "Enemy.h"
 #import "CCDirector.h"
-
+#define ENEMY_ENERGY 100
 @implementation Enemy
 -(id)init {
     self = [super initWithFile:@"stone.png"];
     if (self) {
         // 적의 기본 에너지 100
         _state = alive;
-        _energy = 100;
+        _energy = ENEMY_ENERGY;
     }
     return self;
 }
@@ -57,6 +57,7 @@
     // 적의 위치를 화면 상단으로
     self.position = CGPointMake( self.position.x, winSize.height + self.boundingBox.size.height/2 -1 );
     [self setVisible:YES];
+    _energy = ENEMY_ENERGY;
     _state = alive;
 }
 
