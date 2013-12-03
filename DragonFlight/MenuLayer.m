@@ -20,6 +20,7 @@
     [scene addChild:layer];
     return scene;
 }
+
 -(id)init {
     self = [super init];
     if (self) {

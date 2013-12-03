@@ -13,7 +13,7 @@
 #import "ccDeprecated.h"
 #import "CCSpriteBatchNode.h"
 #import "MenuLayer.h"
-#define BULLET_NUM 30
+#define BULLET_NUM 10
 
 @implementation GameLayer
 -(id)init {
@@ -156,7 +156,7 @@
     Bullet *bullet = (Bullet*)[bullets objectAtIndex:lastBullet];
     // 꺼내서 보이게 설정
     bullet.visible = YES;
-    bullet.position = CGPointMake( _player.position.x, _player.position.y );
+    bullet.position = CGPointMake( _player.position.x, _player.position.y + _player.boundingBox.size.height/2);
     // 마지막 총알이 배열의 마지막이면 다시 초기화
     if (++lastBullet == BULLET_NUM) {
         lastBullet = 0;
@@ -172,7 +172,7 @@
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
     // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴
     [self scheduleUpdate];
-    [self schedule:@selector(updateBullet:) interval:0.05f];
+    [self schedule:@selector(updateBullet:) interval:0.15f];
     [self schedule:@selector(updateScore:) interval:0.01f];
 }
 

@@ -146,7 +146,6 @@
 		4797D89118474ABB0076D61D /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89018474ABB0076D61D /* vec4.c */; };
 		4797D89618474ABB0076D61D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89518474ABB0076D61D /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4797D89918474ABB0076D61D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89818474ABB0076D61D /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		4797D89C18474ABB0076D61D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89B18474ABB0076D61D /* HelloWorldLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4797D89F18474ABB0076D61D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D89E18474ABB0076D61D /* IntroLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4797D8A718474CA40076D61D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8A618474CA40076D61D /* MenuLayer.m */; };
 		4797D8AA1847A8AA0076D61D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4797D8A91847A8AA0076D61D /* GameScene.m */; };
@@ -442,8 +441,6 @@
 		4797D89518474ABB0076D61D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4797D89718474ABB0076D61D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4797D89818474ABB0076D61D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4797D89A18474ABB0076D61D /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		4797D89B18474ABB0076D61D /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		4797D89D18474ABB0076D61D /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		4797D89E18474ABB0076D61D /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		4797D8A518474CA40076D61D /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
@@ -518,8 +515,6 @@
 			children = (
 				4797D89718474ABB0076D61D /* AppDelegate.h */,
 				4797D89818474ABB0076D61D /* AppDelegate.m */,
-				4797D89A18474ABB0076D61D /* HelloWorldLayer.h */,
-				4797D89B18474ABB0076D61D /* HelloWorldLayer.m */,
 				4797D89D18474ABB0076D61D /* IntroLayer.h */,
 				4797D89E18474ABB0076D61D /* IntroLayer.m */,
 				4797D70718474AB60076D61D /* Resources */,
@@ -1117,7 +1112,6 @@
 				4797D89118474ABB0076D61D /* vec4.c in Sources */,
 				4797D89618474ABB0076D61D /* main.m in Sources */,
 				4797D89918474ABB0076D61D /* AppDelegate.m in Sources */,
-				4797D89C18474ABB0076D61D /* HelloWorldLayer.m in Sources */,
 				4797D89F18474ABB0076D61D /* IntroLayer.m in Sources */,
 				4797D8A718474CA40076D61D /* MenuLayer.m in Sources */,
 				4797D8AA1847A8AA0076D61D /* GameScene.m in Sources */,
