@@ -7,6 +7,12 @@
 //
 
 #import "GameLayer.h"
+#import "CCDirector.h"
+#import "CCTouchDispatcher.h"
+#import "ccDeprecated.h"
+#import "MenuLayer.h"
+
+#define BULLET_NUM 10
 
 @implementation GameLayer
 -(id)init {
@@ -30,12 +36,10 @@
 -(void)initBackground {
     // 배경에 사용할 1번 이미지 생성 후, 화면에 꽉 차게 이동
     _backgroundImage1 = [CCSprite spriteWithFile:@"background.png"];
-    _backgroundImage1.anchorPoint = CGPointZero;
     [self addChild:_backgroundImage1];
     
     // 배경에 사용할 2번 이미지 생성 후, 1번 이미지 위로 이동
     _backgroundImage2 = [CCSprite spriteWithFile:@"background.png"];
-    _backgroundImage2.anchorPoint = CGPointZero;
     _backgroundImage2.position = CGPointMake( 0, [_backgroundImage2 boundingBox].size.height);
     [self addChild:_backgroundImage2 z:-1];
 }
@@ -108,9 +112,7 @@
             if (!isCollision && CGRectIntersectsRect(bullet.boundingBox, enemy.boundingBox)) {
                 bullet.visible = NO;
                 
-                if (![enemy attackedWithPoint:[bullet bulletType]]) {
-                    
-                }
+                [enemy attackedWithPoint:[bullet bulletType]];
             }
         }
         

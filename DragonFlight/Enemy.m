@@ -37,7 +37,7 @@
 -(void)reset {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     // 적의 위치를 화면 상단으로
-    self.position = CGPointMake( self.position.x, winSize.height + self.boundingBox.size.height/2 -1 );
+    self.position = CGPointMake( self.position.x, winSize.height + self.boundingBox.size.height/2 );
     [self setVisible:YES];
     _energy = ENEMY_ENERGY;
     _state = alive;
